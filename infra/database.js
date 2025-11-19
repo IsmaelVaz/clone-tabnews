@@ -34,11 +34,13 @@ async function cleanDatabase() {
   await query("drop schema public cascade; create schema public;");
 }
 
-export default {
+const database = {
   query,
   cleanDatabase,
   getNewClient,
 };
+
+export default database;
 
 function getSSLValue() {
   if (process.env.POSTGRES_CA) {
