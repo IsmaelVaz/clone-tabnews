@@ -30,13 +30,8 @@ async function getNewClient() {
   return client;
 }
 
-async function cleanDatabase() {
-  await query("drop schema public cascade; create schema public;");
-}
-
 const database = {
   query,
-  cleanDatabase,
   getNewClient,
 };
 
