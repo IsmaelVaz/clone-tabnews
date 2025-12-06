@@ -1,4 +1,4 @@
-import migrationRunner from "node-pg-migrate";
+import { runner as migrationRunner } from "node-pg-migrate";
 import { resolve } from "node:path";
 import database from "infra/database";
 
@@ -23,6 +23,7 @@ export default async function migrations(request, response) {
     };
 
     if (request.method === "GET") {
+      console.log(defaultMigrationOptions);
       const pendingMigrations = await migrationRunner(defaultMigrationOptions);
       response.status(200).json(pendingMigrations);
     } else if (request.method === "POST") {
